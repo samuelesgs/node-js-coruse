@@ -1,4 +1,5 @@
 const mongose = require('mongoose')
+const mongooseDelete = require('mongoose-delete');
 
 const StorageScheme = new mongose.Schema(
     {
@@ -14,5 +15,5 @@ const StorageScheme = new mongose.Schema(
         versionKey: false
     }
 );
-
+StorageScheme.plugin(mongooseDelete, {overrideMethods:'all'});
 module.exports = mongose.model("storages", StorageScheme)
